@@ -1,82 +1,63 @@
 package hackerRank;
 
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.Scanner;
 
 
 public class Solution {
+	
+    public static String stringCompare(String str1,String str2) { 
+        
+        int retval = str1.compareTo(str2);
+        // prints the return value of the comparison
+        if (retval < 0) {
+           return "No";
+        } else if (retval == 0) {
+            return "No";
+          
+        } else {
+            return "Yes";
+          
+        }
+    
+}
+    
+    public static int stringSize(String str1,String str2) {
+        
+        return str1.length()+str2.length();
+    } 
+    
+    
+    public static String capitalize(String str) {
+        if(str == null || str.isEmpty()) {
+            return str;
+        }
+
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+    
+    public static String toUpper(String str1,String str2) {
+        
+        return capitalize(str1)+" "+capitalize(str2) ;
+    }
+    
+    
+    
 
     public static void main(String[] args) {
-    
-//    	HashMap<Integer, Integer> capitalCities = new HashMap<Integer, Integer>();
-    	
-    	Map<Character, Integer> map = new HashMap<>();
-    	Map<Character, Integer> map2 = new HashMap<>();
-    	
-    	
-    	 Scanner scan = new Scanner(System.in);
-         String a = scan.next();
-         String b = scan.next();
-         a=a.toLowerCase();
-         b=b.toLowerCase();
+        
+         Scanner sc=new Scanner(System.in);
+         String A=sc.next();
+         String B=sc.next();
+         A = A.toLowerCase();
+         B= B.toLowerCase();
          
-         char[] s1 = a.toCharArray();
-         char[] s2 = b.toCharArray();
-         
-         int[] c1 = new int[s1.length];
-         int[] c2 = new int[s2.length];
+        System.out.println(stringSize(A,B));
+        System.out.println(stringCompare(A,B));
+        System.out.println(toUpper(A,B));
          
          
          
-         
-    
-         
-         for (int i = 0; i < s1.length; i++) {
-        	 char x = s1[i];
-             if( ! map.containsKey(x)){
-                 map.put( x, 1 );
-             } else {
-                 Integer frequency = map.get( x );
-                 map.put( x, ++frequency );
-             }
-             
-		}
-         
-         for (int i = 0; i < s2.length; i++) {
-        	 char x = s2[i];
-             if( ! map2.containsKey(x)){
-                 map2.put( x, 1 );
-             } else {
-                 Integer frequency = map2.get( x );
-                 map2.put( x, ++frequency );
-             }
-             
-		}
-         
-         for (Map.Entry<Character, Integer> entry : map.entrySet()) {
-        	 
-        	 	char x = entry.getKey(); 
-        	 	
-        	 	int y = entry.getValue(); 
-        	 	
-        	   if(map2.containsKey(x)) {
-        		   if(map2.get(x)==y) {
-        			   
-        		   }else {
-        			   System.out.println("No");
-        		   }
-        	   }
-
-        	 
-         }
-         
-         
-         
-         
-         System.out.println("Yes");
-         
-       
-    	
     }
+
 }
