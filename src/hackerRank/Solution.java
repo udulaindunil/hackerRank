@@ -1,52 +1,64 @@
 package hackerRank;
 
 
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
 
 public class Solution {
-	
-    public static String capitalize(String str) {
-        if(str == null || str.isEmpty()) {
-            return str;
-        }
 
-        return str.substring(0, 1).toUpperCase() + str.substring(1);
+    // Complete the plusMinus function below.
+    static void plusMinus(int[] arr) {
+    		
+    		Integer pos=0,neg=0,zer=0;
+    		Double positive,zero,negetive;
+    		
+    		    		
+    		for (int i = 0; i < arr.length; i++) {
+				if(arr[i]>0) {
+					pos++;
+				}else if(arr[i]<0) {
+					neg++;
+				}else {
+					zer++;
+				}
+			}
+    		
+    		positive = Double.valueOf(pos)/arr.length;
+    		negetive = Double.valueOf(neg)/arr.length;
+    		zero = Double.valueOf(zer)/arr.length;
+    		
+    		System.out.println(positive);
+    		System.out.println(negetive);
+    		System.out.println(zero);
+    		
+    		
+
     }
-    
-		
+
+    private static final Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
-    	        
+        int n = scanner.nextInt();
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-        String regex = "\\b(\\w+)(\\s+\\1\\b)+";
-        Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+        int[] arr = new int[n];
 
-        Scanner in = new Scanner(System.in);
-        int numSentences = Integer.parseInt(in.nextLine());
-        
-        while (numSentences-- > 0) {
-            String input = in.nextLine();
-            
-            Matcher m = p.matcher(input);
-            
-           
-            	  while (m.find()) {
-                      input = input.replaceAll(m.group(), m.group(1));
-                  }
-            	  
-            	  if (!m.find()) {
-                  	
-                 	 System.out.println(input);
-            	  }else {
-            		  
-            		  System.out.println(capitalize(input));
-            	  }                
-            
+        String[] arrItems = scanner.nextLine().split(" ");
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        for (int i = 0; i < n; i++) {
+            int arrItem = Integer.parseInt(arrItems[i]);
+            arr[i] = arrItem;
         }
-        
-        in.close();
-    }
 
+        plusMinus(arr);
+
+        scanner.close();
+    }
 }
