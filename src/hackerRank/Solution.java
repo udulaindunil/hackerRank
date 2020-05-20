@@ -1,7 +1,5 @@
 package hackerRank;
 
-
-
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -12,32 +10,20 @@ import java.util.regex.*;
 
 public class Solution {
 
-    // Complete the plusMinus function below.
-    static void plusMinus(int[] arr) {
-    		
-    		Integer pos=0,neg=0,zer=0;
-    		Double positive,zero,negetive;
-    		
-    		    		
-    		for (int i = 0; i < arr.length; i++) {
-				if(arr[i]>0) {
-					pos++;
-				}else if(arr[i]<0) {
-					neg++;
-				}else {
-					zer++;
-				}
+    // Complete the staircase function below.
+    static void staircase(int n) {
+ 
+    	for (int i = 0; i < n; i++) {
+    		int p = i+1;
+			for (int j = 0; j <n-p; j++) {
+				System.out.print(' ');
 			}
-    		
-    		positive = Double.valueOf(pos)/arr.length;
-    		negetive = Double.valueOf(neg)/arr.length;
-    		zero = Double.valueOf(zer)/arr.length;
-    		
-    		System.out.println(positive);
-    		System.out.println(negetive);
-    		System.out.println(zero);
-    		
-    		
+			
+			for (int j = 0; j <p; j++) {
+				System.out.print('#');
+			}
+			System.out.println(' ');
+		}
 
     }
 
@@ -47,17 +33,7 @@ public class Solution {
         int n = scanner.nextInt();
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-        int[] arr = new int[n];
-
-        String[] arrItems = scanner.nextLine().split(" ");
-        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-
-        for (int i = 0; i < n; i++) {
-            int arrItem = Integer.parseInt(arrItems[i]);
-            arr[i] = arrItem;
-        }
-
-        plusMinus(arr);
+        staircase(n);
 
         scanner.close();
     }
