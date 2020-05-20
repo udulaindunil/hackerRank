@@ -1,65 +1,42 @@
-package hackerRank;
 import java.io.*;
 import java.math.*;
-import java.security.*;
 import java.text.*;
 import java.util.*;
-import java.util.concurrent.*;
 import java.util.regex.*;
-
 public class Solution {
 
-    // Complete the birthdayCakeCandles function below.
-    static int birthdayCakeCandles(int[] ar) {
 
-    	int max=0;
-    	
-    	for (int i = 0; i < ar.length; i++) {
-    		if(max>ar[i]) {
-    			
-    		}else {
-    			max=ar[i];
-    		}
-		}
-    	
-    	int x =0;
-    	
-    	for (int i = 0; i < ar.length; i++) {
-    		if(ar[i]==max) {
-    			x++;
-    		}
-		}
-    	
-    	
-    	return x;
-    }
-
-    private static final Scanner scanner = new Scanner(System.in);
+    private static final Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+        BufferedWriter bw = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-        int arCount = scanner.nextInt();
-        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+        String s = scan.nextLine();
 
-        int[] ar = new int[arCount];
+        String listTime[] = s.split(":");
+        String hour = listTime[0];
+        String minutes = listTime[1];
+        String secounds = listTime[2].substring(0, 2);
+        String caser = listTime[2].substring(2, 4);
+        if(caser.equals("AM")){
+            if(hour.equals("12"))
+                   hour="00";
 
-        String[] arItems = scanner.nextLine().split(" ");
-        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
-
-        for (int i = 0; i < arCount; i++) {
-            int arItem = Integer.parseInt(arItems[i]);
-            ar[i] = arItem;
+            System.out.println(hour+":"+minutes+":"+secounds);
+             bw.write(hour+":"+minutes+":"+secounds);
+        }else{
+            if(!hour.equals("12")){
+                int h = Integer.parseInt(hour); 
+                h = h +12; 
+                hour =""+h; 
+            }
+            System.out.println(hour+":"+minutes+":"+secounds);
+            bw.write(hour+":"+minutes+":"+secounds);
         }
 
-        int result = birthdayCakeCandles(ar);
+      
+       bw.newLine();
 
-        bufferedWriter.write(String.valueOf(result));
-        bufferedWriter.newLine();
-
-        bufferedWriter.close();
-
-        scanner.close();
+        bw.close();
     }
 }
-
