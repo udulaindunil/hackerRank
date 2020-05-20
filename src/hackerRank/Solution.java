@@ -1,5 +1,4 @@
 package hackerRank;
-
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -10,48 +9,57 @@ import java.util.regex.*;
 
 public class Solution {
 
-    // Complete the miniMaxSum function below.
-    static void miniMaxSum(int[] arr) {
-    	
-    	Arrays.sort(arr);
-    	Integer x=0,y=0;
+    // Complete the birthdayCakeCandles function below.
+    static int birthdayCakeCandles(int[] ar) {
 
-         if(arr.length<=4) {
-        	 Integer r=0;
-        	 for (int i = 0; i < arr.length; i++) {
-				r=r+arr[i];
-			}
-        	 System.out.printf("%d %d ",r,r);
-        	 return ;
-         }
-         
-    	for (int i = 0; i < 4; i++) {
-			x=x+arr[i];
-		}
-    	for (int i = arr.length-1; i > arr.length-5 ; i--) {
-			y=y+arr[i];
+    	int max=0;
+    	
+    	for (int i = 0; i < ar.length; i++) {
+    		if(max>ar[i]) {
+    			
+    		}else {
+    			max=ar[i];
+    		}
 		}
     	
-    	System.out.printf("%d %d ",x,y);
+    	int x =0;
     	
-
+    	for (int i = 0; i < ar.length; i++) {
+    		if(ar[i]==max) {
+    			x++;
+    		}
+		}
+    	
+    	
+    	return x;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
-        int[] arr = new int[5];
+    public static void main(String[] args) throws IOException {
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
-        String[] arrItems = scanner.nextLine().split(" ");
+        int arCount = scanner.nextInt();
         scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-        for (int i = 0; i < 5; i++) {
-            int arrItem = Integer.parseInt(arrItems[i]);
-            arr[i] = arrItem;
+        int[] ar = new int[arCount];
+
+        String[] arItems = scanner.nextLine().split(" ");
+        scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+        for (int i = 0; i < arCount; i++) {
+            int arItem = Integer.parseInt(arItems[i]);
+            ar[i] = arItem;
         }
 
-        miniMaxSum(arr);
+        int result = birthdayCakeCandles(ar);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedWriter.close();
 
         scanner.close();
     }
 }
+
